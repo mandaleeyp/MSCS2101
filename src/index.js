@@ -3,6 +3,26 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import firebase from 'firebase/app';
+import 'firebase/database';
+
+const firebaseConfig = {
+  // Your Firebase project configuration
+  apiKey: "AIzaSyCdAs7g_plkWJbSiogA-1ACS9Vz616WIHY",
+  authDomain: "budget-buddy-18354.firebaseapp.com",
+  projectId: "budget-buddy-18354",
+  storageBucket: "budget-buddy-18354.appspot.com",
+  messagingSenderId: "409312370584",
+  appId: "1:409312370584:web:c87ae4dcd0fc572b2bd5ed",
+  measurementId: "G-6T2T3JL1NW"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+const database = firebase.database();
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
