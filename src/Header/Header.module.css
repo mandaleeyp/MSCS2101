@@ -1,0 +1,38 @@
+.header {
+    position: fixed;
+    background: var(--background) !important;
+    z-index: 1;
+    color: white;
+    height: 250px;
+    width: calc(100% - 250px);
+    right: 0;
+    padding: 48px;
+}
+
+.welcome {
+    font-size: 24px;
+    font-weight: lighter;
+
+}
+
+
+.title {
+    font-size: 72px;
+    color: var(--accent);
+    font-weight: bolder;
+}
+
+.statistic {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.subtext {
+    font-size: 24px;
+    /* font-weight: lighter; */
+}
+
+.dollar {
+    font-size: 24px;
+    vertical-align: super;
+}
