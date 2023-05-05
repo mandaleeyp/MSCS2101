@@ -1,18 +1,16 @@
-import React, { useContext } from 'react'
-import { Menu, Tag } from 'antd'
+import React from 'react'
 
-import styles from './Resources.module.css'
+// import styles from './Resources.module.css'
 import MenuWrap from '../Menu/MenuWrap'
 
 const Resources = () => {
-
   return (
     <MenuWrap route='/resources'>
-        <div>
+      <div>
         This is the Resources page
-        </div>
+      </div>
     </MenuWrap>
-        
+
   )
 }
 

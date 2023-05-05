@@ -1,18 +1,16 @@
-import React, { useContext } from 'react'
-import { Menu, Tag } from 'antd'
+import React from 'react'
 
-import styles from './Dashboard.module.css'
+// import styles from './Dashboard.module.css'
 import MenuWrap from '../Menu/MenuWrap'
 
 const Dashboard = () => {
-
   return (
     <MenuWrap route='/'>
-        <div>
+      <div>
         This is the dashboard page
-        </div>
+      </div>
     </MenuWrap>
-        
+
   )
 }
 

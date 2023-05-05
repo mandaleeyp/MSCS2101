@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react'
-import { Layout, Menu, Tag } from 'antd'
+import React, { useState } from 'react'
+import { Layout, Menu } from 'antd'
 import { HomeOutlined, InfoCircleOutlined, ProfileOutlined, SettingOutlined, CalendarOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
 
@@ -41,40 +41,41 @@ const MenuWrap = ({ children, route }) => {
   ]
 
   return (
-    
+
     <Layout style={{ minHeight: '100vh' }}>
-    <Sider
-      className={styles.sider}
-      style={{
-        height: '100vh',
-        position: 'fixed',
-        left: 0,
-      }}
-    >
-      <div className={styles.logo}>Budget Buddy</div>
-      <div className={styles.familyPhoto}><img src={familyPhoto}></img></div>
-      <div className={styles.familyName}>The Wilson Family</div>
-      <Menu theme="dark" mode="inline" selectedKeys={selectedKeys} className={styles.menu}>
-        {routes.map((route) => {
-          return (
-            <Menu.Item key={route.route} icon={route.icon} onClick={(e) => {
-              setSelectedKeys([e.key])
-              navigate(e.key)
-            }}>
-              {route.title}
-            </Menu.Item>
-          )
-     
-        })}
-      </Menu>
-    </Sider>
-    <Layout>
-      <Header title='Dashboard' description='' />
+      <Sider
+        className={styles.sider}
+        style={{
+          height: '100vh',
+          position: 'fixed',
+          left: 0
+        }}
+      >
+        <div className={styles.logo}>Budget Buddy</div>
+        <div className={styles.familyPhoto}><img src={familyPhoto} /></div>
+        <div className={styles.familyName}>The Wilson Family</div>
+        <Menu theme='dark' mode='inline' selectedKeys={selectedKeys} className={styles.menu}>
+          {routes.map((route) => {
+            return (
+              <Menu.Item
+                key={route.route} icon={route.icon} onClick={(e) => {
+                  setSelectedKeys([e.key])
+                  navigate(e.key)
+                }}
+              >
+                {route.title}
+              </Menu.Item>
+            )
+          })}
+        </Menu>
+      </Sider>
+      <Layout>
+        <Header title='Dashboard' description='' />
         <div className={styles.container}>
           {children}
         </div>
+      </Layout>
     </Layout>
-  </Layout>
   )
 }
 
