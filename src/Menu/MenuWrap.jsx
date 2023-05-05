@@ -52,7 +52,7 @@ const MenuWrap = ({ children, route }) => {
         }}
       >
         <div className={styles.logo}>Budget Buddy</div>
-        <div className={styles.familyPhoto}><img src={familyPhoto} /></div>
+        <div className={styles.familyPhoto}><img src={familyPhoto} alt='family' /></div>
         <div className={styles.familyName}>The Wilson Family</div>
         <Menu theme='dark' mode='inline' selectedKeys={selectedKeys} className={styles.menu}>
           {routes.map((route) => {
