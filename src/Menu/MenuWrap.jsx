@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Layout, Menu } from 'antd'
-import { HomeOutlined, InfoCircleOutlined, ProfileOutlined, SettingOutlined, CalendarOutlined } from '@ant-design/icons'
+import { HomeOutlined, InfoCircleOutlined, ProfileOutlined, SettingOutlined,AccountBookOutlined, CalendarOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
 
 import styles from './MenuWrap.module.css'
@@ -32,6 +32,11 @@ const MenuWrap = ({ children, route }) => {
       icon: <InfoCircleOutlined />,
       title: 'Resources',
       route: '/resources'
+    },
+    {
+      icon: <AccountBookOutlined />,
+      title: 'Account',
+      route: '/account'
     },
     {
       icon: <SettingOutlined />,
