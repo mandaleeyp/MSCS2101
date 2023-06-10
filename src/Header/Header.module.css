@@ -3,7 +3,7 @@
     background: var(--background) !important;
     z-index: 1;
     color: white;
-    height: 250px;
+    height: 190px;
     width: calc(100% - 250px);
     right: 0;
     padding: 48px;

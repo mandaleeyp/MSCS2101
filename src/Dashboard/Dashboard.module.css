@@ -3,7 +3,7 @@
 
 .column {
     flex: 1;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .title {
@@ -20,7 +20,7 @@
 .statsContainer {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two columns of equal width */
-    grid-gap: 20px; /* Gap between columns */
+    grid-gap: 40px; /* Gap between columns */
 }
 
 .pieContainer {
@@ -31,3 +31,54 @@
 .barContainer {
     height: 400px;
 }
+
+
+.selectMonth {
+    margin-bottom: 24px;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  
+  .customCard {
+    flex-grow: 1;
+    border: 5px solid var(--background);
+    /* background-color: var(--accent); */
+    border-radius: 4px;
+    padding: 16px;
+    margin-right: 16px; /* Adjust the margin value as per your preference */
+  }
+
+  .select[class*='ant-select-single'] {
+    width: 100%;
+  }
+
+  .select [class*='ant-select-selector'] {
+    background-color: transparent !important;
+    border: none !important;
+    height: 40px !important;
+    align-items: center;
+    font-size: 32px;
+    padding-left: 0px !important;
+    width: 100%;
+  }
+  
+  .select [class*='ant-select-arrow'] {
+    font-size: 32px;
+  }
+
+  .cardTitle {
+    /* color: white; */
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .cardValue {
+    /* color: white; */
+    font-size: 32px;
+    font-weight: bolder;
+  }

@@ -35,7 +35,7 @@ const AddMonth = () => {
       const newMonth = doc(collection(db, 'calendar'))
       await setDoc(newMonth, {
         month,
-        year: year.$y,
+        year: (year.$y).toString(),
         familyId,
         availableFunds,
         savingsGoal
@@ -119,18 +119,17 @@ const AddMonth = () => {
             labelCol={{ span: 6 }}
             wrapperCol={{ span: 18 }}
             rules={[
-              { required: true, message: 'Please enter the desired amount to save' },
-              ({ getFieldValue }) => ({
-                validator (_, value) {
-                  const availableFunds = getFieldValue('availableFunds')
-                  if (value >= availableFunds) {
-                    return Promise.resolve()
-                  }
-                  return Promise.reject(
-                    new Error('The desired amount to save cannot be more than the available funds')
-                  )
-                }
-              })
+              { required: true, message: 'Please enter the desired amount to save' }
+              // ({ getFieldValue }) => ({
+              //   validator (_, value) {
+              //     const availableFunds = getFieldValue('availableFunds')
+              //     if (value >= availableFunds) {
+              //       return Promise.resolve();
+              //     } else {
+              //       return Promise.reject('The desired amount to save cannot be more than the available funds');
+              //     }
+              //   }
+              // })
             ]}
           >
             <Input type='number' step='0.01' />

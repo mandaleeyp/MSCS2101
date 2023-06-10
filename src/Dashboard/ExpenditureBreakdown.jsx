@@ -6,7 +6,6 @@ import styles from './Dashboard.module.css'
 import { EXPENSE_CATEGORIES } from '../constants'
 
 const ExpenditureBreakdown = ({ expenditures }) => {
-  console.log(expenditures)
   // Calculate total expenditure per category
   const totalExpenditurePerCategory = expenditures.reduce((acc, expense) => {
     acc[expense.category] = (acc[expense.category] || 0) + parseFloat(expense.amount)
