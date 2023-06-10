@@ -19,3 +19,30 @@ export const AVATAR_OPTIONS = {
   avatar8,
   avatar9
 }
+
+export const EXPENSE_CATEGORIES = {
+  Transportation: {
+    label: 'Transportation',
+    color: 'green'
+  },
+  Entertainment: {
+    label: 'Entertainment',
+    color: 'red'
+  },
+  Shopping: {
+    label: 'Shopping',
+    color: 'blue'
+  },
+  Food: {
+    label: 'Food',
+    color: 'pink'
+  },
+  Housing: {
+    label: 'Housing',
+    color: 'orange'
+  },
+  Other: {
+    label: 'Other',
+    color: 'purple'
+  }
+}

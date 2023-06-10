@@ -29,7 +29,8 @@
     left: 250px;
     top: 250px;
     padding: 48px;
-    height: 100%;
+    height: auto;
+    min-height: 100%;
 }
 
 .logout {

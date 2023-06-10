@@ -1,5 +1,4 @@
 .container {
-    display: flex;
 }
 
 .column {
@@ -11,4 +10,24 @@
     font-size: 32px;
     color: var(--backgroundDark);
     font-weight: bold;
+    margin-bottom: 24px;
+}
+
+.stats {
+    display: flex;
+}
+
+.statsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+    grid-gap: 20px; /* Gap between columns */
+}
+
+.pieContainer {
+    height: 400px;
+    margin-bottom: 48px;
+}
+
+.barContainer {
+    height: 400px;
 }

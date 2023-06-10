@@ -6,56 +6,98 @@ import MonthlyExpenditureList from './MonthlyExpenditureList'
 import ExpenditureBreakdown from './ExpenditureBreakdown'
 import { Select } from 'antd'
 import { getFirebaseDb } from '../Utils/getDatabase'
+import { collection, query, where, onSnapshot, getDocs } from 'firebase/firestore'
+import { useAuth } from '../Login/AuthContext'
 
-// Define dummy data for testing
-const dummyExpenditures = [
-  { id: 1, category: 'Food', amount: 100, spender: 'John' },
-  { id: 2, category: 'Transportation', amount: 50, spender: 'Jane' },
-  { id: 3, category: 'Shopping', amount: 200, spender: 'John' },
-  { id: 4, category: 'Entertainment', amount: 150, spender: 'Jane' }
-]
-
-const dummyFamilyMembers = ['John', 'Jane', 'Michael']
 const { Option } = Select
 
 const Dashboard = () => {
-  console.log('DASHBOARd')
-  const [calendarData, setCalendarData] = useState([])
   const db = getFirebaseDb()
+  const { currentUser } = useAuth()
+  const familyId = currentUser.uid
+  const [calendarData, setCalendarData] = useState([])
+  const [currentMonthYear, setCurrentMonthYear] = useState(null)
+  const [expenses, setExpenses] = useState([])
 
+  // calendar data
   useEffect(() => {
     const fetchCalendarData = async () => {
-      const calendarCollection = db.collection('calendar')
-      const snapshot = await calendarCollection.get()
+      const q = query(collection(db, 'calendar'), where('familyId', '==', familyId))
+      const snapshot = await getDocs(q)
       const data = snapshot.docs.map((doc) => doc.data())
       setCalendarData(data)
+      setCurrentMonthYear(data.length > 0 ? `${data[0].year}-${data[0].month}` : null)
     }
 
     fetchCalendarData()
   }, [db])
 
-  const dropdown = (
-    <Select placeholder='Select a month'>
-      <Option disabled>
-        To add a new month, go to the calendar page
-      </Option>
-      {calendarData.map((month) => (
-        <Option key={month.id} value={month.id}>
-          {month.name}
-        </Option>
-      ))}
-    </Select>
-  )
+  useEffect(() => {
+    const q = query(collection(db, 'calendar'), where('familyId', '==', familyId))
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const updatedData = snapshot?.docs?.map((doc) => doc?.data())
+      setCalendarData(updatedData)
+    })
+    return () => unsubscribe()
+  }, [db, familyId])
+
+  const handleChangeMonth = (e) => {
+    setCurrentMonthYear(e)
+  }
+
+  // expenses data
+  useEffect(() => {
+    const fetchExpensesData = async () => {
+      const q = query(
+        collection(db, 'expenses'),
+        where('familyId', '==', familyId),
+        where('month', '==', currentMonthYear?.split('-')[0]),
+        where('year', '==', currentMonthYear?.split('-')[1])
+      )
+      const querySnapshot = await getDocs(q)
+      const data = querySnapshot?.docs.map((doc) => doc?.data())
+      setExpenses(data)
+    }
+    if (currentMonthYear) fetchExpensesData()
+  }, [db, currentMonthYear])
+
+  useEffect(() => {
+    if (currentMonthYear) {
+      const q = query(
+        collection(db, 'expenses'),
+        where('familyId', '==', familyId),
+        where('month', '==', currentMonthYear?.split('-')[0]),
+        where('year', '==', currentMonthYear?.split('-')[1])
+      )
+      const unsubscribe = onSnapshot(q, (snapshot) => {
+        const updatedData = snapshot?.docs?.map((doc) => doc?.data())
+        setExpenses(updatedData)
+      })
+      return () => unsubscribe()
+    }
+  }, [db, familyId, currentMonthYear])
 
   return (
-    <MenuWrap route='/' title='Dashboard' statistic={12312 / 12312} dropdown={dropdown}>
+    <MenuWrap route='/' title='Dashboard'>
       <div className={styles.container}>
-        <div className={styles.column}>
-          <div className={styles.title}>Monthly Expenditures</div>
-          <MonthlyExpenditureList />
-        </div>
-        <div className={styles.column}>
-          <ExpenditureBreakdown expenditures={dummyExpenditures} familyMembers={dummyFamilyMembers} />
+        <Select placeholder='Select a month' value={currentMonthYear} onChange={(e) => handleChangeMonth(e)}>
+          <Option disabled>
+            To add a new month, go to the calendar page
+          </Option>
+          {calendarData.map((data) => (
+            <Option key={`${data.year}-${data.month}`} value={`${data.year}-${data.month}`}>
+              {data.month} {data.year}
+            </Option>
+          ))}
+        </Select>
+        <div className={styles.statsContainer}>
+          <div className={styles.column}>
+            <div className={styles.title}>Monthly Expenditures</div>
+            <MonthlyExpenditureList expenses={expenses} currentMonthYear={currentMonthYear} />
+          </div>
+          <div className={styles.column}>
+            <ExpenditureBreakdown expenditures={expenses} />
+          </div>
         </div>
       </div>
     </MenuWrap>
