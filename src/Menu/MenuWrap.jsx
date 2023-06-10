@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { Layout, Menu } from 'antd'
-import { HomeOutlined, InfoCircleOutlined, ProfileOutlined, SettingOutlined,AccountBookOutlined, CalendarOutlined } from '@ant-design/icons'
+import { HomeOutlined, InfoCircleOutlined, ProfileOutlined, LogoutOutlined, AccountBookOutlined, CalendarOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
 
 import styles from './MenuWrap.module.css'
 import Sider from 'antd/es/layout/Sider'
 import familyPhoto from '../images/family-icon.svg'
 import Header from '../Header/Header'
+import { getAuth } from 'firebase/auth'
+import { app } from '../index'
 
-const MenuWrap = ({ children, route }) => {
+const MenuWrap = ({ children, route, title, statistic = null, dropdown = null }) => {
   const navigate = useNavigate()
   const [selectedKeys, setSelectedKeys] = useState([route])
 
@@ -32,18 +34,29 @@ const MenuWrap = ({ children, route }) => {
       icon: <InfoCircleOutlined />,
       title: 'Resources',
       route: '/resources'
-    },
-    {
-      icon: <AccountBookOutlined />,
-      title: 'Account',
-      route: '/account'
-    },
-    {
-      icon: <SettingOutlined />,
-      title: 'Settings',
-      route: '/settings'
     }
+    // {
+    //   icon: <AccountBookOutlined />,
+    //   title: 'Account',
+    //   route: '/account'
+    // },
+    // {
+    //   icon: <SettingOutlined />,
+    //   title: 'Settings',
+    //   route: '/settings'
+    // }
   ]
+
+  const handleLogout = async () => {
+    try {
+      const auth = getAuth(app)
+      await auth.signOut()
+      // Perform any additional logout logic or redirect as needed
+    } catch (error) {
+      // Handle error
+      console.log('Error occurred during logout:', error)
+    }
+  }
 
   return (
 
@@ -72,10 +85,13 @@ const MenuWrap = ({ children, route }) => {
               </Menu.Item>
             )
           })}
+          <Menu.Item style={{ bottom: '24px', position: 'absolute' }} className={styles.logout} icon={<LogoutOutlined />} onClick={handleLogout}>
+            Logout
+          </Menu.Item>
         </Menu>
       </Sider>
       <Layout>
-        <Header title='Dashboard' description='' />
+        <Header title={title} description='' statistic={statistic} dropdown={dropdown} />
         <div className={styles.container}>
           {children}
         </div>

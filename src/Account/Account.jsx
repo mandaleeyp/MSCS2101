@@ -1,6 +1,6 @@
 import React from 'react'
-import LoginPage from './LoginPage'; // import the LoginPage component
-import styles from './Account.module.css'; // import styles from './Account.module.css'
+import LoginPage from '../Login/Login' // import the LoginPage component
+import styles from './Account.module.css' // import styles from './Account.module.css'
 import MenuWrap from '../Menu/MenuWrap'
 
 const Account = () => {

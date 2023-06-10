@@ -1,9 +1,3 @@
-.grid {
-    display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Three equal columns */
-  grid-gap: 10px; /* Gap between cards */
-}
-
 .card {
     background-color: var(--background);
     padding: 24px;

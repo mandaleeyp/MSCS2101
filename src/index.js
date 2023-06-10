@@ -5,7 +5,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { initializeApp } from 'firebase/app'
 import { getDatabase } from 'firebase/database'
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
   // Your Firebase project configuration
@@ -19,9 +19,9 @@ const firebaseConfig = {
 }
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const dbs = getFirestore(app);
+const app = initializeApp(firebaseConfig)
+const db = getDatabase(app)
+const dbs = getFirestore(app)
 
 console.log(db)
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -36,4 +36,4 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals()
 
-export {app,db,dbs}
+export { app, db, dbs }

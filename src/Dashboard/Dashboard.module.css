@@ -1,9 +1,14 @@
 .container {
-    background-color: var(--secondary);
-    height: calc(100vh - 250px);
-    width: calc(100% - 250px);
-    position: absolute;
-    left: 250px;
-    top: 250px;
-    padding: 48px;
+    display: flex;
+}
+
+.column {
+    flex: 1;
+  padding: 20px;
+}
+
+.title {
+    font-size: 32px;
+    color: var(--backgroundDark);
+    font-weight: bold;
 }

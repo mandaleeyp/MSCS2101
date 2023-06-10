@@ -30,3 +30,10 @@
     top: 250px;
     padding: 48px;
 }
+
+.logout {
+    position: absolute;
+    font-weight: bold;
+    bottom: 24px;
+    color: var(--accent);
+}

@@ -5,7 +5,7 @@ import MenuWrap from '../Menu/MenuWrap'
 
 const Settings = () => {
   return (
-    <MenuWrap route='/settings'>
+    <MenuWrap route='/settings' title='Settings'>
       <div>
         This is the Settings page
       </div>
