@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { collection, getDocs, query, where } from 'firebase/firestore'
+import { collection, query, where, onSnapshot } from 'firebase/firestore'
 
 import styles from './Calendar.module.css'
 import MenuWrap from '../Menu/MenuWrap'
@@ -15,18 +15,13 @@ const Calendar = () => {
   const familyId = currentUser.uid
 
   useEffect(() => {
-    const fetchMonths = async () => {
-      try {
-        const q = query(collection(db, 'calendar'), where('familyId', '==', familyId))
-        const querySnapshot = await getDocs(q)
-        const calendarData = querySnapshot.docs.map((doc) => doc.data())
-        setMonths(calendarData)
-      } catch (error) {
-        console.error('Error fetching calendar:', error)
-      }
-    }
-    fetchMonths()
-  }, [])
+    const q = query(collection(db, 'calendar'), where('familyId', '==', familyId))
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const updatedData = snapshot?.docs?.map((doc) => doc?.data())
+      setMonths(updatedData)
+    })
+    return () => unsubscribe()
+  }, [db, familyId])
 
   return (
     <MenuWrap route='/calendar' title='Calendar'>

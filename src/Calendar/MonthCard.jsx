@@ -1,14 +1,37 @@
 import React from 'react'
 
-// import styles from './Calendar.module.css'
+import styles from './MonthCard.module.css'
 import { Card } from 'antd'
+
+const monthMappings = {
+  January: 'Jan',
+  February: 'Feb',
+  March: 'Mar',
+  April: 'Apr',
+  May: 'May',
+  June: 'Jun',
+  July: 'Jul',
+  August: 'Aug',
+  September: 'Sep',
+  October: 'Oct',
+  November: 'Nov',
+  December: 'Dec'
+}
 
 const MonthCard = ({ data }) => {
   return (data &&
-    <Card>
+    <Card className={styles.card}>
       <Card.Meta
-        title={data.month}
-        description={data.goal}
+        title={
+          <div className={styles.cardTitle}>
+            <span>
+              <div className={styles.month}>{monthMappings[data.month]}</div>
+              <div>{data.year}</div>
+            </span>
+            <span className={styles.goal}><span className={styles.dollar}>$</span>{data.savingsGoal}</span>
+          </div>
+        }
+        // description={data.goal}
       />
     </Card>)
 }

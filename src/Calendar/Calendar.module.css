@@ -18,3 +18,37 @@
     font-size: 16px;
     font-weight: bold;
 }
+
+.submit {
+    width: 230px;
+}
+
+.description {
+    color: white;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 24px;
+}
+
+.title {
+    color: white;
+    font-size: 32px;
+    font-weight: bolder;
+    margin-bottom: 12px;
+}
+
+.modal [class*='ant-modal-content']{
+    padding: 48px 32px;
+    width: 600px;
+}
+
+.modal [class*='ant-modal-title'] {
+    font-size: 32px;
+    margin-bottom: 32px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.footer {
+    text-align: center;
+}

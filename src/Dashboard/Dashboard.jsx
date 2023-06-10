@@ -32,7 +32,7 @@ const Dashboard = () => {
     }
 
     fetchCalendarData()
-  }, [])
+  }, [db])
 
   const dropdown = (
     <Select placeholder='Select a month'>

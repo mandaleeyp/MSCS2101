@@ -5,13 +5,12 @@ import { useAuth } from './AuthContext'
 const ProtectedRoute = ({ children }) => {
   const { currentUser } = useAuth()
   const navigate = useNavigate()
-  console.log('currentUser', currentUser)
 
   useEffect(() => {
     if (!currentUser) {
       navigate('/login')
     }
-  }, [currentUser])
+  }, [currentUser, navigate])
 
   return children
 }

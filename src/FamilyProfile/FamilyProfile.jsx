@@ -20,7 +20,7 @@ const FamilyProfile = () => {
       setFamilyMembers(updatedData)
     })
     return () => unsubscribe()
-  }, [])
+  }, [db, familyId])
 
   return (
     <MenuWrap route='/family-profile' title='Family Profile'>

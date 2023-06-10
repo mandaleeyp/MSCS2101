@@ -23,7 +23,7 @@ const AddMonth = () => {
   }
 
   const handleAddMonth = async (values) => {
-    const { month, year, goal } = values
+    const { month, year, availableFunds, savingsGoal } = values
     const q = query(
       collection(db, 'calendar'),
       where('familyId', '==', familyId),
@@ -37,7 +37,8 @@ const AddMonth = () => {
         month,
         year: year.$y,
         familyId,
-        goal
+        availableFunds,
+        savingsGoal
       })
       // Show success message
       message.success('Month added successfully!')
@@ -53,12 +54,16 @@ const AddMonth = () => {
   return (
     <div>
       <div className={styles.card}>
+        <div className={styles.title}>Add New Month</div>
+        <div className={styles.description}>To track your progress and set monthly goals, you can add a "New Month" card where you can define your desired goal and monitor your progress throughout the month. This feature empowers you to stay focused and achieve your objectives effectively.
+        </div>
         <Button className={styles.addButton} type='primary' onClick={showModal}>
-          Add Month
+          Add New Month
         </Button>
       </div>
 
       <Modal
+        className={styles.modal}
         title='Add Month'
         visible={isModalVisible}
         onCancel={handleCancel}
@@ -68,6 +73,8 @@ const AddMonth = () => {
           <Form.Item
             name='month'
             label='Month'
+            labelCol={{ span: 6 }} // Adjust the span value to control the label width
+            wrapperCol={{ span: 18 }} // Adjust the span value to control the input width
             rules={[{ required: true, message: 'Please select the month' }]}
           >
             <Select placeholder='Select month'>
@@ -89,24 +96,49 @@ const AddMonth = () => {
           <Form.Item
             name='year'
             label='Year'
+            labelCol={{ span: 6 }} // Adjust the span value to control the label width
+            wrapperCol={{ span: 18 }} // Adjust the span value to control the input width
             rules={[{ required: true, message: 'Please select the year' }]}
           >
             <DatePicker picker='year' placeholder='Select year' />
           </Form.Item>
-
           <Form.Item
-            name='goal'
-            label='Goal Amount'
+            name='availableFunds'
+            label='Available Funds'
+            labelCol={{ span: 6 }}
+            wrapperCol={{ span: 18 }}
             rules={[
-              { required: true, message: 'Please enter the goal amount' }
-              //   { type: 'number', message: 'Please enter a valid number' },
+              { required: true, message: 'Please enter the total amount of funds available this month' }
             ]}
           >
             <Input type='number' step='0.01' />
           </Form.Item>
-
-          <Form.Item>
-            <Button type='primary' htmlType='submit'>
+          <Form.Item
+            name='savingsGoal'
+            label='Savings Goal'
+            labelCol={{ span: 6 }}
+            wrapperCol={{ span: 18 }}
+            rules={[
+              { required: true, message: 'Please enter the desired amount to save' },
+              ({ getFieldValue }) => ({
+                validator (_, value) {
+                  const availableFunds = getFieldValue('availableFunds')
+                  if (value >= availableFunds) {
+                    return Promise.resolve()
+                  }
+                  return Promise.reject(
+                    new Error('The desired amount to save cannot be more than the available funds')
+                  )
+                }
+              })
+            ]}
+          >
+            <Input type='number' step='0.01' />
+          </Form.Item>
+          <Form.Item
+            className={styles.footer}
+          >
+            <Button className={styles.submit} type='primary' htmlType='submit'>
               Add
             </Button>
           </Form.Item>

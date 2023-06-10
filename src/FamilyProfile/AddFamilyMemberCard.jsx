@@ -21,7 +21,7 @@ const AddFamilyMemberCard = () => {
     form.resetFields()
     setSelectedAvatar('')
   }
-  console.log(currentUser)
+
   const handleSubmit = async (values) => {
     try {
       const db = getFirebaseDb()
