@@ -33,7 +33,7 @@
   }
 
   .goal {
-    font-size: 52px;
+    font-size: 32px;
     font-weight: bolder;
     color: var(--accent);
   }
@@ -41,4 +41,9 @@
   .dollar {
     font-size: 24px;
     color: var(--background);
+  }
+
+  .subtext {
+    font-weight: normal;
+    font-size: 16px;
   }

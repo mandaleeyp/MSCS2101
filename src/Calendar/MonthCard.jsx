@@ -28,10 +28,16 @@ const MonthCard = ({ data }) => {
               <div className={styles.month}>{monthMappings[data.month]}</div>
               <div>{data.year}</div>
             </span>
-            <span className={styles.goal}><span className={styles.dollar}>$</span>{data.savingsGoal}</span>
+            <span>
+              <span className={styles.goal}><span className={styles.dollar}>$</span>{data.savingsGoal}</span>
+              <div className={styles.subtext}>Goal</div>
+            </span>
+            <span>
+              <span className={styles.goal}><span className={styles.dollar}>$</span>{data.availableFunds}</span>
+              <div className={styles.subtext}>Total budget</div>
+            </span>
           </div>
         }
-        // description={data.goal}
       />
     </Card>)
 }

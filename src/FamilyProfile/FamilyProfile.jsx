@@ -24,8 +24,8 @@ const FamilyProfile = () => {
 
   return (
     <MenuWrap route='/family-profile' title='Family Profile'>
+      <AddFamilyMemberCard />
       <div className={styles.grid}>
-        <AddFamilyMemberCard />
         {familyMembers?.map((familyMember, i) => (
           <FamilyMemberCard key={i} data={familyMember} />
         ))}

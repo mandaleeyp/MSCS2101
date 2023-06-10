@@ -1,7 +1,9 @@
 .card {
     background-color: var(--background);
     padding: 24px;
+    width: 33%;
     border-radius: 4px;
+    margin-bottom: 24px;
 }
 
 .submit {

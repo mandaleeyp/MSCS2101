@@ -25,8 +25,8 @@ const Calendar = () => {
 
   return (
     <MenuWrap route='/calendar' title='Calendar'>
+      <AddMonth />
       <div className={styles.grid}>
-        <AddMonth />
         {months?.map((month, i) => (
           <MonthCard key={i} data={month} />
         ))}
