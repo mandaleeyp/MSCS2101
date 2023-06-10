@@ -4,23 +4,64 @@ import Dashboard from './Dashboard/Dashboard'
 import FamilyProfile from './FamilyProfile/FamilyProfile'
 import Resources from './Resources/Resources'
 import Calendar from './Calendar/Calendar'
-import Account from './Account/Account'
+// import Account from './Account/Account'
 import Settings from './Settings/Settings'
-import SuccessPage from './Account/SuccessPage'
+// import SuccessPage from './Account/SuccessPage'
+import ProtectedRoute from './Login/ProtectedRoute'
+import Login from './Login/Login'
+import { AuthProvider } from './Login/AuthContext'
 
 function App () {
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Dashboard />} />
-        <Route path='/calendar' element={<Calendar />} />
-        <Route path='/family-profile' element={<FamilyProfile />} />
-        <Route path='/resources' element={<Resources />} />
-        <Route path='/account' element={<Account />} />
-        <Route path='/settings' element={<Settings />} />
-        <Route path='/success' element={<SuccessPage />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path='/login' element={<Login />} />
+          <Route
+            path='/'
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/calendar'
+            element={
+              <ProtectedRoute>
+                <Calendar />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/family-profile'
+            element={
+              <ProtectedRoute>
+                <FamilyProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/resources'
+            element={
+              <ProtectedRoute>
+                <Resources />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/settings'
+            element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            }
+          />
+          {/* <Route path='/account' element={<Account />} />
+          <Route path='/success' element={<SuccessPage />} /> */}
+        </Routes>
+      </Router>
+    </AuthProvider>
   )
 }
 

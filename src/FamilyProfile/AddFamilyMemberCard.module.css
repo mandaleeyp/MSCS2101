@@ -1,24 +1,9 @@
-.grid {
-    display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Three equal columns */
-  grid-gap: 10px; /* Gap between cards */
-}
-
 .card {
     background-color: var(--background);
     padding: 24px;
     width: 33%;
     border-radius: 4px;
     margin-bottom: 24px;
-}
-
-.addButton {
-    background-color: var(--accent);
-    color: var(--text);
-    border-radius: 4px;
-    border: none;
-    font-size: 16px;
-    font-weight: bold;
 }
 
 .submit {
@@ -41,7 +26,6 @@
 
 .modal [class*='ant-modal-content']{
     padding: 48px 32px;
-    width: 600px;
 }
 
 .modal [class*='ant-modal-title'] {
@@ -54,3 +38,6 @@
 .footer {
     text-align: center;
 }
+
+
+

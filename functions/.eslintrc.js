@@ -22,6 +22,12 @@ module.exports = {
         mocha: true
       },
       rules: {}
+    },
+    {
+      files: ['Login.jsx'], // Specify the file name or pattern
+      rules: {
+        'no-alert': 'off' // Disable the 'no-alert' rule for the specified files
+      }
     }
   ],
   globals: {

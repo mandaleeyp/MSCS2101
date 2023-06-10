@@ -5,7 +5,7 @@ import MenuWrap from '../Menu/MenuWrap'
 
 const Resources = () => {
   return (
-    <MenuWrap route='/resources'>
+    <MenuWrap route='/resources' title='Resources'>
       <div>
         This is the Resources page
       </div>

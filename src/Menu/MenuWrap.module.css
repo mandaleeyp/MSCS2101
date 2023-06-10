@@ -23,10 +23,19 @@
 
 .container {
     background-color: var(--secondary);
-    height: calc(100vh - 250px);
+    /* height: calc(100vh - 250px); */
     width: calc(100% - 250px);
     position: absolute;
     left: 250px;
-    top: 250px;
+    top: 190px;
     padding: 48px;
+    height: auto;
+    min-height: 100%;
+}
+
+.logout {
+    position: absolute;
+    font-weight: bold;
+    bottom: 24px;
+    color: var(--accent);
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const SuccessPage = ({ message }) => {
   return (
@@ -6,7 +6,7 @@ const SuccessPage = ({ message }) => {
       <h2>Success</h2>
       <h2>{message}</h2>
     </div>
-  );
-};
+  )
+}
 
-export default SuccessPage;
+export default SuccessPage

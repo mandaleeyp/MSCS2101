@@ -1,0 +1,25 @@
+
+.modal [class*='ant-modal-content']{
+    padding: 48px 32px;
+    width: 600px;
+}
+
+.modal [class*='ant-modal-title'] {
+    font-size: 32px;
+    margin-bottom: 32px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.footer {
+    text-align: center;
+}
+.submit {
+    width: 230px;
+}
+
+.categoryTag {
+    padding: 4px 12px;
+    margin-top: 6px;
+    line-height: 12px !important;
+}

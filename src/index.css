@@ -6,6 +6,7 @@
   --accent: #f9bc60;
   --text: #001e1d;
   --tertiary: #e16162;
+  --main: #e8e4e6
 }
 
 body {
@@ -47,4 +48,19 @@ button {
 
 a {
   color: var(--accent-color-1);
+}
+
+.ant-btn-primary {
+  background-color: var(--accent);
+  color: var(--text);
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: none;
+}
+
+.ant-btn-primary:hover {
+  background-color: #fac87d;
+  color: var(--text);
 }

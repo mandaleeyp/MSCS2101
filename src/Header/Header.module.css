@@ -3,10 +3,11 @@
     background: var(--background) !important;
     z-index: 1;
     color: white;
-    height: 250px;
+    height: 190px;
     width: calc(100% - 250px);
     right: 0;
     padding: 48px;
+    display: flex;
 }
 
 .welcome {
@@ -35,4 +36,14 @@
 .dollar {
     font-size: 24px;
     vertical-align: super;
+}
+
+
+.column {
+    flex: 1;
+}
+
+.dropdown {
+    align-self: end;
+    text-align: end;
 }

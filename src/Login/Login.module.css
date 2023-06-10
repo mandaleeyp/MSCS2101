@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background);
+}
+
+.content {
+    width: 500px;
+    text-align: center;
+}
+
+.appName {
+    font-size: 62px;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 48px;
+}
+
+.icon {
+    width: 200px;
+}
+
+.title {
+    color: white;
+}
+
+.loginForm {
+    color: white;
+}
+
+formGroup {
+    margin-bottom: 12px;
+}
+
+.submit {
+    padding: 12px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 50%;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 24px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="signup"] {
+  padding: 10px;
+  margin-bottom: 12px;
+  width: 50%;
+}
+
+.label {
+    width: 100px;
+    text-align: left;
+    display: inline-block;
+}
