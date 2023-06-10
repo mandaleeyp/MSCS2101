@@ -26,7 +26,7 @@ const Dashboard = () => {
       const snapshot = await getDocs(q)
       const data = snapshot.docs.map((doc) => doc.data())
       setCalendarData(data)
-      setCurrentMonthYear(data.length > 0 ? `${data[0].year}-${data[0].month}` : null)
+      setCurrentMonthYear(data.length > 0 ? `${data[0].month}-${data[0].year}` : null)
     }
 
     fetchCalendarData()
@@ -85,7 +85,7 @@ const Dashboard = () => {
             To add a new month, go to the calendar page
           </Option>
           {calendarData.map((data) => (
-            <Option key={`${data.year}-${data.month}`} value={`${data.year}-${data.month}`}>
+            <Option key={`${data.month}-${data.year}`} value={`${data.month}-${data.year}`}>
               {data.month} {data.year}
             </Option>
           ))}
