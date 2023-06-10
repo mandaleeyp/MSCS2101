@@ -34,6 +34,7 @@ const Login = () => {
       const auth = getAuth(app)
       if (isSignup) {
         if (password.length < 6) {
+          // eslint-disable-next-line
           alert('Password must be at least 6 characters long')
           return
         }
@@ -57,8 +58,10 @@ const Login = () => {
     } catch (error) {
       console.error('Error signing up/in:', error)
       if (error.code === 'auth/wrong-password') {
+        // eslint-disable-next-line
         alert('Wrong password')
       } else {
+        // eslint-disable-next-line
         alert('Error signing in')
         console.error('Error signing up/in:', error)
         console.log(app)

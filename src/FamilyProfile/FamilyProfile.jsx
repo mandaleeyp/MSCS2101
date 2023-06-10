@@ -5,27 +5,21 @@ import MenuWrap from '../Menu/MenuWrap'
 import AddFamilyMemberCard from './AddFamilyMemberCard'
 import { getFirebaseDb } from '../Utils/getDatabase'
 import FamilyMemberCard from './FamilyMemberCard'
-import { getDatabase, query, ref } from 'firebase/database'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, query, where, onSnapshot } from 'firebase/firestore'
 import { useAuth } from '../Login/AuthContext'
 
 const FamilyProfile = () => {
   const [familyMembers, setFamilyMembers] = useState([])
   const db = getFirebaseDb()
   const { currentUser } = useAuth()
-  console.log(currentUser)
+  const familyId = currentUser.uid
   useEffect(() => {
-    const fetchFamilyMembers = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, 'familyMembers'))
-        const familyMembersData = querySnapshot.docs.map((doc) => doc.data())
-        setFamilyMembers(familyMembersData)
-      } catch (error) {
-        console.error('Error fetching family members:', error)
-      }
-    }
-
-    fetchFamilyMembers()
+    const q = query(collection(db, 'familyMembers'), where('familyId', '==', familyId))
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const updatedData = snapshot?.docs?.map((doc) => doc?.data())
+      setFamilyMembers(updatedData)
+    })
+    return () => unsubscribe()
   }, [])
 
   return (

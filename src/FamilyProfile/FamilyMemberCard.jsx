@@ -1,26 +1,19 @@
 // family card component
 import React from 'react'
 import styles from './FamilyMemberCard.module.css'
-import { Avatar, Card } from 'antd'
+import { Avatar, Card, Tag } from 'antd'
 
-import avatar1 from '../images/avatar-1.png'
-import avatar2 from '../images/avatar-2.png'
-import avatar3 from '../images/avatar-3.png'
-
-const avatarOptions = {
-  avatar1,
-  avatar2,
-  avatar3
-}
+import { AVATAR_OPTIONS } from '../constants'
 
 const FamilyMemberCard = ({ data }) => {
-  return data && <Card>
-    <Card.Meta
-      avatar={<Avatar src={avatarOptions[data.avatar]} />}
-      title={data.name}
-      description={data.relationship}
-    />
-                 </Card>
+  return (data &&
+    <Card className={styles.card}>
+      <Card.Meta
+        avatar={<Avatar className={styles.avatar} src={AVATAR_OPTIONS[data.avatar]} />}
+        title={data.name}
+        description={<Tag color='gold' className={styles.tag}>{data.relationship}</Tag>}
+      />
+    </Card>)
 }
 
 export default FamilyMemberCard

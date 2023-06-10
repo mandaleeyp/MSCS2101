@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Layout, Menu } from 'antd'
-import { HomeOutlined, InfoCircleOutlined, ProfileOutlined, LogoutOutlined, AccountBookOutlined, CalendarOutlined } from '@ant-design/icons'
+import { HomeOutlined, InfoCircleOutlined, ProfileOutlined, LogoutOutlined, CalendarOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
 
 import styles from './MenuWrap.module.css'
@@ -35,16 +35,6 @@ const MenuWrap = ({ children, route, title, statistic = null, dropdown = null })
       title: 'Resources',
       route: '/resources'
     }
-    // {
-    //   icon: <AccountBookOutlined />,
-    //   title: 'Account',
-    //   route: '/account'
-    // },
-    // {
-    //   icon: <SettingOutlined />,
-    //   title: 'Settings',
-    //   route: '/settings'
-    // }
   ]
 
   const handleLogout = async () => {
@@ -71,7 +61,6 @@ const MenuWrap = ({ children, route, title, statistic = null, dropdown = null })
       >
         <div className={styles.logo}>Budget Buddy</div>
         <div className={styles.familyPhoto}><img src={familyPhoto} alt='family' /></div>
-        <div className={styles.familyName}>The Wilson Family</div>
         <Menu theme='dark' mode='inline' selectedKeys={selectedKeys} className={styles.menu}>
           {routes.map((route) => {
             return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from 'antd'
+// import { Card } from 'antd'
 import { Pie, Bar } from 'react-chartjs-2'
 import 'chart.js/auto'
 

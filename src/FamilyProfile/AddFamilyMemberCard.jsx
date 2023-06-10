@@ -1,24 +1,16 @@
-// family card component
 import React, { useState } from 'react'
 import styles from './AddFamilyMemberCard.module.css'
 import { Form, Button, Modal, Input, message, Avatar } from 'antd'
-import { UserOutlined } from '@ant-design/icons'
-import avatar1 from '../images/avatar-1.png'
-import avatar2 from '../images/avatar-2.png'
-import avatar3 from '../images/avatar-3.png'
 import { getFirebaseDb } from '../Utils/getDatabase'
 import { collection, doc, setDoc } from 'firebase/firestore'
-
-const avatarOptions = {
-  avatar1,
-  avatar2,
-  avatar3
-}
+import { AVATAR_OPTIONS } from '../constants'
+import { useAuth } from '../Login/AuthContext'
 
 const AddFamilyMemberCard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [form] = Form.useForm()
   const [selectedAvatar, setSelectedAvatar] = useState('')
+  const { currentUser } = useAuth()
 
   const openModal = () => {
     setIsModalOpen(true)
@@ -29,7 +21,7 @@ const AddFamilyMemberCard = () => {
     form.resetFields()
     setSelectedAvatar('')
   }
-
+  console.log(currentUser)
   const handleSubmit = async (values) => {
     try {
       const db = getFirebaseDb()
@@ -37,7 +29,8 @@ const AddFamilyMemberCard = () => {
       await setDoc(newFamilyMemberRef, {
         name: values.name,
         relationship: values.relationship,
-        avatar: selectedAvatar
+        avatar: selectedAvatar,
+        familyId: currentUser.uid
       })
       form.resetFields()
       closeModal()
@@ -55,13 +48,18 @@ const AddFamilyMemberCard = () => {
   return (
     <div>
       <div className={styles.card}>
-        <h3>Add Family Member</h3>
+        <div className={styles.title}>Add Family Member</div>
+        <div className={styles.description}>To get started on your family profile in the BudgetBuddy app,
+          begin by creating family members. This will allow you to track individual expenses
+          and manage your overall budget effectively.
+        </div>
         <Button className={styles.addButton} type='primary' onClick={openModal}>
           Add New Member
         </Button>
       </div>
 
       <Modal
+        className={styles.modal}
         title='Add Family Member'
         visible={isModalOpen}
         onCancel={closeModal}
@@ -71,6 +69,8 @@ const AddFamilyMemberCard = () => {
           <Form.Item
             name='name'
             label='Name'
+            labelCol={{ span: 6 }} // Adjust the span value to control the label width
+            wrapperCol={{ span: 18 }} // Adjust the span value to control the input width
             rules={[{ required: true, message: 'Please enter the name' }]}
           >
             <Input />
@@ -78,6 +78,8 @@ const AddFamilyMemberCard = () => {
           <Form.Item
             name='relationship'
             label='Relationship'
+            labelCol={{ span: 6 }} // Adjust the span value to control the label width
+            wrapperCol={{ span: 18 }} // Adjust the span value to control the input width
             rules={[{ required: true, message: 'Please enter the relationship' }]}
           >
             <Input />
@@ -85,18 +87,21 @@ const AddFamilyMemberCard = () => {
           <Form.Item
             name='avatar'
             label='Avatar'
+            labelCol={{ span: 6 }} // Adjust the span value to control the label width
+            wrapperCol={{ span: 18 }} // Adjust the span value to control the input width
             rules={[{ required: true, message: 'Please select an avatar' }]}
           >
-            {Object.keys(avatarOptions).map((avatar) => (
+            {Object.keys(AVATAR_OPTIONS).map((avatar) => (
               <Avatar
                 key={avatar}
-                icon={<img src={avatarOptions[avatar]} alt='icon' />}
+                icon={<img src={AVATAR_OPTIONS[avatar]} alt='icon' />}
                 alt='Avatar'
                 style={{
                   cursor: 'pointer',
                   backgroundColor: 'var(--secondary)',
                   padding: '12px',
                   marginRight: '12px',
+                  marginBottom: 6,
                   border: selectedAvatar === avatar ? '5px solid var(--accent)' : 'none'
                 }}
                 onClick={() => handleAvatarChange(avatar)}
@@ -105,8 +110,10 @@ const AddFamilyMemberCard = () => {
               />
             ))}
           </Form.Item>
-          <Form.Item>
-            <Button type='primary' htmlType='submit'>
+          <Form.Item
+            className={styles.footer}
+          >
+            <Button className={styles.submit} type='primary' htmlType='submit'>
               Submit
             </Button>
           </Form.Item>

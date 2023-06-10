@@ -1,0 +1,21 @@
+.avatar {
+    width: 100px;
+    height: 100px;
+    background-color: var(--accent);
+    border: 5px solid var(--accent);
+}
+
+.card {
+    border: 3px solid var(--background);
+    height: wrap-content;
+}
+
+.card [class*='ant-card-meta-title'] {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.tag {
+    font-size: 20px;
+    padding: 8px 16px;
+}

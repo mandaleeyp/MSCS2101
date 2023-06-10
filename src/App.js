@@ -1,15 +1,15 @@
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Dashboard from './Dashboard/Dashboard'
 import FamilyProfile from './FamilyProfile/FamilyProfile'
 import Resources from './Resources/Resources'
 import Calendar from './Calendar/Calendar'
-import Account from './Account/Account'
+// import Account from './Account/Account'
 import Settings from './Settings/Settings'
-import SuccessPage from './Account/SuccessPage'
+// import SuccessPage from './Account/SuccessPage'
 import ProtectedRoute from './Login/ProtectedRoute'
 import Login from './Login/Login'
-import { AuthProvider, useAuth } from './Login/AuthContext'
+import { AuthProvider } from './Login/AuthContext'
 
 function App () {
   return (

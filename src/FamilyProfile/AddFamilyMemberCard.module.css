@@ -4,11 +4,37 @@
     border-radius: 4px;
 }
 
-.addButton {
-    background-color: var(--accent);
-    color: var(--text);
-    border-radius: 4px;
-    border: none;
+.submit {
+    width: 230px;
+}
+
+.description {
+    color: white;
     font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 24px;
+}
+
+.title {
+    color: white;
+    font-size: 32px;
+    font-weight: bolder;
+    margin-bottom: 12px;
+}
+
+.modal [class*='ant-modal-content']{
+    padding: 48px 32px;
+}
+
+.modal [class*='ant-modal-title'] {
+    font-size: 32px;
+    margin-bottom: 24px;
     font-weight: bold;
 }
+
+.footer {
+    text-align: center;
+}
+
+
+

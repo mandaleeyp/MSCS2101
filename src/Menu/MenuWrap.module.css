@@ -23,12 +23,13 @@
 
 .container {
     background-color: var(--secondary);
-    height: calc(100vh - 250px);
+    /* height: calc(100vh - 250px); */
     width: calc(100% - 250px);
     position: absolute;
     left: 250px;
     top: 250px;
     padding: 48px;
+    height: 100%;
 }
 
 .logout {
