@@ -30,7 +30,7 @@ const Dashboard = () => {
     }
 
     fetchCalendarData()
-  }, [db])
+  }, [db, familyId])
 
   useEffect(() => {
     const q = query(collection(db, 'calendar'), where('familyId', '==', familyId))
@@ -59,7 +59,7 @@ const Dashboard = () => {
       setExpenses(data)
     }
     if (currentMonthYear) fetchExpensesData()
-  }, [db, currentMonthYear])
+  }, [db, currentMonthYear, familyId])
 
   useEffect(() => {
     if (currentMonthYear) {

@@ -41,7 +41,7 @@ const AddExpenseModal = ({ currentMonthYear, isModalVisible, setIsModalVisible }
     }
 
     fetchFamilyMembersData()
-  }, [db])
+  }, [db, familyId])
 
   const handleOk = () => {
     setIsModalVisible(false)
