@@ -7,12 +7,12 @@ const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!currentUser) {
+    if (currentUser === null) {
       navigate('/login')
     }
   }, [currentUser, navigate])
 
-  return children
+  return currentUser && children
 }
 
 export default ProtectedRoute
