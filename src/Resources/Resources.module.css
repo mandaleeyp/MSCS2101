@@ -1,0 +1,89 @@
+.grid {
+    display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px; 
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    background-color: var(--accent);
+    border: 5px solid var(--background);
+    margin-bottom: 12px;
+}
+
+.card {
+    border: 3px solid var(--background);
+    height: wrap-content;
+    padding: 24px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.card [class*='ant-card-meta-title'] {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.tag {
+    font-size: 20px;
+    padding: 8px 16px;
+}
+
+.aboutCard {
+    background-color: var(--background);
+    padding: 24px;
+    width: 33%;
+    border-radius: 4px;
+    margin-bottom: 24px;
+}
+
+.card:hover {
+    background-color: var(--accent);
+    cursor: pointer;
+}
+
+.submit {
+    width: 230px;
+}
+
+.description {
+    color: white;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 24px;
+}
+
+.title {
+    color: white;
+    font-size: 32px;
+    font-weight: bolder;
+    margin-bottom: 12px;
+}
+
+.modal [class*='ant-modal-content']{
+    padding: 48px 32px;
+}
+
+.modal [class*='ant-modal-title'] {
+    font-size: 32px;
+    margin-bottom: 32px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.footer {
+    text-align: center;
+}
+
+.resourceTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.icon {
+    font-size: 32px;
+    margin-top: 4px !important;
+    color: var(--background);
+}
